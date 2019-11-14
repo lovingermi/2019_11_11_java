@@ -7,7 +7,7 @@ public class Tanulo
 	private String evfolyam;
 	private int osztaly;
 	private int[] angolJegyek= new int[3];
-	private double feleviAngol;
+	private int feleviAngol;
 	public Tanulo(String nev, int szuletesiEv) {
 		
 		this.nev = nev;
@@ -41,7 +41,7 @@ public class Tanulo
 	public double getFeleviAngol() {
 		return feleviAngol;
 	}
-	public void setFeleviAngol(double feleviAngol) {
+	public void setFeleviAngol(int feleviAngol) {
 		this.feleviAngol = feleviAngol;
 	}
 	public String getNev() {
@@ -60,5 +60,38 @@ public class Tanulo
 		return"Név: "+getNev()+" "+"félévi angol osztályzat"+getFeleviAngol();
 	}
 	
-	
+	public int getAngolJegy(int[] jegyek)
+	{
+		int ossz=0;;
+		float atlag;
+		int db=0;
+		for (int i = 0; i < jegyek.length; i++) 
+		{
+			ossz+=jegyek[i];
+			db++;
+		}
+		atlag=(float)ossz/db;
+		if(atlag>=4.5)
+		{
+			return 5;
+		}
+		else
+		if(atlag>=3.6)	
+		{
+			return 4;
+		}
+		else
+		if(atlag>=2.7)
+		{
+			return 3;
+		}
+		if(atlag>=1.8)
+		{
+			return 2;
+		}
+		else
+		{
+			return 1;
+		}	
+	}
 }
